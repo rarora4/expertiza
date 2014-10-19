@@ -12,7 +12,7 @@ class CreateQuestionnaireFolderNodes < ActiveRecord::Migration
     pNode = FolderNode.find_by_node_object_id(parent.id)
       
     fnode = TreeFolder.create(:name => 'Review', :child_type => 'QuestionnaireNode')    
-    pfNode = FolderNode.create(:parent_id => pNode.id, :node_object_id => fnode.id)
+    pfNode = FolderNode.create(parent_id: pNode.id, node_object_id: fnode.id)
     
     ReviewQuestionnaire.find_each{
       | questionnaire |

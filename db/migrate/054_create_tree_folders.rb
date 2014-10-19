@@ -3,6 +3,7 @@ class CreateTreeFolders < ActiveRecord::Migration
     create_table :tree_folders do |t|
       t.column :name, :string
       t.column :child_type, :string
+      t.column "parent_id", :integer
     end      
     
     TreeFolder.create(:name => 'Questionnaires', :child_type => 'QuestionnaireTypeNode')

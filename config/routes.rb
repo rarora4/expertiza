@@ -1,9 +1,8 @@
-Expertiza::Application.routes.draw do
+Rails.application.routes.draw do
   resources :bookmark_tags
   resources :books
   resources :bookmarks
   resources :join_team_requests
-
   resources :admin do
     collection do
       get :list_super_administrators
@@ -17,7 +16,6 @@ Expertiza::Application.routes.draw do
       get :show_instructor
     end
   end
-
   resources :advertise_for_partner do
     collection do
       get :edit
@@ -25,13 +23,11 @@ Expertiza::Application.routes.draw do
       post ':id', action: :update
     end
   end
-
   resources :assessment360 do
     collection do
       get :one_course_all_assignments
     end
   end
-
   resources :assignments do
     collection do
       get :associate_assignment_with_course
@@ -44,16 +40,13 @@ Expertiza::Application.routes.draw do
       get :delete_all_due_dates
     end
   end
-
   resources :auth do
     collection do
       post :login
       post :logout
     end
   end
-
   resources :author_feedback_questionnaires, controller: 'questionnaires'
-
   resources :bookmark do
     collection do
       get :manage_bookmarks, as: :manage
@@ -68,18 +61,12 @@ Expertiza::Application.routes.draw do
       get :view_rating_rubric
     end
   end
-
   resources :content_pages do
     collection do
       get :list
       get ':page_name', action: :view
     end
   end
-
-
-
-
-
   resources :controller_actions do
     collection do
       get 'list'
@@ -87,7 +74,6 @@ Expertiza::Application.routes.draw do
       get 'new_for'
     end
   end
-
   resources :course do
     collection do
       post :delete
@@ -99,13 +85,11 @@ Expertiza::Application.routes.draw do
       post :remove_ta
     end
   end
-
   resources :course_evaluation do
     collection do
       get :list
     end
   end
-
   resources :eula do
     collection do
       get :accept
@@ -113,7 +97,6 @@ Expertiza::Application.routes.draw do
       get :display
     end
   end
-
   resources :export_file do
     collection do
       get :start
@@ -121,7 +104,6 @@ Expertiza::Application.routes.draw do
       post :export
     end
   end
-
   resources :grades do
     collection do
       get :view
@@ -132,25 +114,20 @@ Expertiza::Application.routes.draw do
       get :conflict_notification
     end
   end
-
   resources :impersonate do
     collection do
       get :start
       post :impersonate
     end
   end
-
   resources :import_file do
     collection do
       get :start
       get :import
     end
   end
-
   get '/import_file/import', controller: :import_file, action: :import
-
   resources :institutions
-
   resources :invitation do
     collection do
       get :cancel
@@ -158,25 +135,19 @@ Expertiza::Application.routes.draw do
       get :decline
     end
   end
-
   resources :join_team_requests do
     collection do
       get :decline
     end
   end
-
   get 'late_policies', controller: :late_policies, action: :index
-
   resources :leaderboard, constraints: {id: /\d+/} do
     collection do
       get :index
     end
   end
-
   get 'leaderboard/index', controller: :leaderboard, action: :index
-
   resources :markup_styles
-
   resources :menu_items do
     collection do
       get :move_down
@@ -186,7 +157,6 @@ Expertiza::Application.routes.draw do
       get :list
     end
   end
-
   resources :participants do
     collection do
       get :add
@@ -202,16 +172,13 @@ Expertiza::Application.routes.draw do
       get :bequeath_all
     end
   end
-
   get '/participants/change_handle', controller: :participants, action: :change_handle
-
   resources :password_retrieval do
     collection do
       get :forgotten
       post :send_password
     end
   end
-
   resources :permissions, constraints: {id: /\d+/} do
     collection do
       get :list
@@ -220,13 +187,11 @@ Expertiza::Application.routes.draw do
       delete ':id', action: :destroy
     end
   end
-
   resources :profile do
     collection do
       get :edit
     end
   end
-
   resources :publishing do
     collection do
       get :view
@@ -238,7 +203,6 @@ Expertiza::Application.routes.draw do
       get :set_publish_permission
     end
   end
-
   resources :questionnaires do
     collection do
       get :copy
@@ -251,7 +215,6 @@ Expertiza::Application.routes.draw do
       get :view
     end
   end
-
   resources :review_questionnaires, controller: :questionnaires
   resources :metareview_questionnaires, controller: :questionnaires
   resources :teammate_review_questionnaires, controller: :questionnaires
@@ -259,9 +222,6 @@ Expertiza::Application.routes.draw do
   resources :global_survey_questionnaires, controller: :questionnaires
   resources :course_evaluation_questionnaires, controller: :questionnaires
   resources :bookmarkrating_questionnaires, controller: :questionnaires
-
-
-
   resources :response do
     collection do
       get :new_feedback
@@ -272,7 +232,6 @@ Expertiza::Application.routes.draw do
       get :redirection
     end
   end
-
   resources :review_mapping do
     collection do
       post :add_metareviewer
@@ -299,7 +258,6 @@ Expertiza::Application.routes.draw do
       get :show_available_submissions
     end
   end
-
   resources :review_files do
     collection do
       get :show_all_submitted_files
@@ -309,20 +267,17 @@ Expertiza::Application.routes.draw do
       get :submit_comment
     end
   end
-
   resources :roles do
     collection do
       get :list
       post ':id', action: :update
     end
   end
-
   resources :roles_permissions do
     collection do
       get :new_permission_for_role
     end
   end
-
   resources :sign_up_sheet do
     collection do
       get :signup
@@ -339,14 +294,12 @@ Expertiza::Application.routes.draw do
       get :view_publishing_rights
     end
   end
-
   resources :site_controllers do
     collection do
       get 'list'
       get 'new_called'
     end
   end
-
   resources :statistics do
     collection do
       get :list_surveys
@@ -354,20 +307,17 @@ Expertiza::Application.routes.draw do
       get :view_responses
     end
   end
-
   resources :student_review do
     collection do
       get :list
     end
   end
-
   resources :student_task do
     collection do
       get :list
       get :view
     end
   end
-
   resources :student_team do
     collection do
       get :view
@@ -376,7 +326,6 @@ Expertiza::Application.routes.draw do
       get :auto_complete_for_user_name
     end
   end
-
   resources :submitted_content do
     collection do
       get :download
@@ -390,19 +339,16 @@ Expertiza::Application.routes.draw do
       get :view
     end
   end
-
   resources :suggestion do
     collection do
       get :list
     end
   end
-
   resources :survey do
     collection do
       get :assign
     end
   end
-
   resources :survey_deployment do
     collection do
       get :list
@@ -410,33 +356,28 @@ Expertiza::Application.routes.draw do
       get :reminder_thread
     end
   end
-
   resources :survey_response do
     collection do
       get :view_responses
     end
   end
-
   resources :system_settings do
     collection do
       get :list
     end
   end
-
   resources :teams do
     collection do
       get :list
       post ':id', action: :update
     end
   end
-
   resources :tree_display do
     collection do
       get ':action'
       post 'list'
     end
   end
-
   resources :users, constraints: {id: /\d+/} do
     collection do
       get :list
@@ -446,23 +387,18 @@ Expertiza::Application.routes.draw do
       get :keys
     end
   end
-
   resources :versions do
     collection do
       delete '', action: :destroy_all
     end
   end
-
   get '/users/show_selection', controller: :users, action: :show_selection
   get '/users/list', controller: :users, action: :list
   get '/menu/*name', controller: :menu_items, action: :link
   get ':page_name', controller: :content_pages, action: :view, method: :get
   get '/submitted_content/submit_hyperlink' => 'submitted_content#submit_hyperlink'
-
   root to: 'content_pages#view', page_name: 'home'
-
   get 'users/list', :to => 'users#list'
-
   get '/submitted_content/remove_hyperlink', :to => 'submitted_content#remove_hyperlink'
   get '/submitted_content/submit_hyperlink', :to => 'submitted_content#submit_hyperlink'
   get '/submitted_content/submit_file', :to => 'submitted_content#submit_file'
@@ -470,9 +406,7 @@ Expertiza::Application.routes.draw do
   get '/review_mapping/assign_reviewer_dynamically', :to => 'review_mapping#assign_reviewer_dynamically'
   get "/review_mapping/assign_metareviewer_dynamically", :to => 'review_mapping#assign_metareviewer_dynamically'
   get 'response/', :to => 'response#saving'
-
   get 'question/select_questionnaire_type', :controller => "questionnaire", :action => 'select_questionnaire_type'
   get ':controller/service.wsdl', :action => 'wsdl'
-
   get ':controller(/:action(/:id))(.:format)'
 end
